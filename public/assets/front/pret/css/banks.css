@@ -1,0 +1,268 @@
+/*============== Parsley ==============*/
+input.parsley-success,
+select.parsley-success,
+textarea.parsley-success {
+    color: #468847;
+    background-color: #DFF0D8;
+    border: 1px solid #D6E9C6;
+}
+
+input.parsley-error,
+select.parsley-error,
+textarea.parsley-error {
+    color: #c0392b;
+    background-color: #F2DEDE;
+    border: 1px solid #EED3D7;
+
+}
+
+.parsley-errors-list {
+    margin: 2px 0 3px;
+    padding: 0;
+    list-style-type: none;
+    font-size: 0.9em;
+    line-height: 0.9em;
+    opacity: 0;
+    color:  #c0392b;
+    transition: all .3s ease-in;
+    -o-transition: all .3s ease-in;
+    -moz-transition: all .3s ease-in;
+    -webkit-transition: all .3s ease-in;
+    font-weight: 800;
+    font-size: 15px;
+}
+
+.parsley-errors-list.filled {
+    opacity: 1;
+}
+
+/*my own css*/
+.list1-2{
+
+    color: #aaa;
+    margin-left: 25px;
+}
+.list1-2 li a{
+    font-weight: 600;
+    color: #ee5656;
+}
+.list1-2 li a:hover{
+    color: #005384005384;
+    text-decoration: none;
+}
+
+hr.small{
+    width: 80px;
+    border: 3px solid #005384;
+    border-radius: 10px;
+}
+.about{
+    font-family: verdana;
+    color: #999;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 35px;
+}
+
+.lang li a img{
+    border-radius: 100%;
+    height: 30px;
+    width: 30px;
+}
+.lang li a img:hover{
+
+    border: 2px solid #005384;
+    box-sizing: border-box;
+    transition: 0.1s all;
+}
+.lang li a img.active{
+
+    border: 2px solid #005384;
+    transition: 0.1s all;
+}
+
+
+
+
+
+
+
+
+
+.navbar-default .navbar-nav > .active > a{
+    border-radius: 4px;
+    background-color: transparent;
+    border: 2px solid #005384;
+    transition: 0.3s all;
+}
+
+.navbar-default .navbar-nav > .active > a:hover{
+
+    background-color: #005384;
+
+}
+.account{
+    background-color: #ddd;
+
+}
+
+.logon-box, .login-box{
+    padding: 20px;
+
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 80px;
+    background-color: rgba(155, 155, 155, 0.5);
+    border-radius: 5px;
+    box-shadow: 2px 2px 2px 0px #555;
+
+}
+.login-box{
+    width: 450px;
+}
+@media (max-width: 768px) {
+    .logon-box, .login-box{
+        width: 100%;
+    }
+}
+
+
+.logon-box h3{
+    color: #8BC34A;
+    font-size: 40px;
+    font-weight: 800;
+
+}
+.logon-box .alert-success{
+    background-color: #005384;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 600;
+}
+.logon-box h4{
+    color: #eee;
+    font-weight: 800;
+}
+.logon-box form{
+    font-size: 20px;
+}
+.bar{
+    background-color: rgba(139,195,74, 0.8);
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 12;
+    padding: 7px;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 300;
+    border-bottom: 2px solid #8BC34A;
+
+}
+.bar a{
+    color: #fff;
+
+}
+.bar a:hover{
+    text-decoration: underline;
+}
+.bar .fa-lg{
+    color: #8BC34A;
+    border: 2px solid #fff;
+    border-radius: 100%;
+}
+
+.banner, .banner-1{
+    padding-top: 30px;
+
+}
+
+.banner nav{
+    margin-left: 30px;
+}
+
+.left{
+
+    left: 0;
+    border-radius: 0px 10px  10px 0px;
+}
+.right{
+
+    right: 0;
+    border-radius: 10px 0px 0px 10px;
+}
+.connect{
+    position: fixed;
+    color: #fff;
+    top: 60px;
+    padding: 10px;
+    font-weight: 600;
+    background-color: rgba(139,195,74, 0.8);
+    transition: 0.5s all;
+
+}
+
+
+.connect a{
+    color: #fff;
+}
+
+.form-control-feedback{
+    color: rgb(0,83,132);
+}
+
+
+
+
+@media (max-width: 992px) {
+    .bar{
+        position: absolute;
+        padding-bottom: 15px;
+    }
+    .bar span:first-child{
+        display: none;
+    }
+    .connect{
+        background-color: transparent;
+        top: 0;
+        position: absolute;
+        z-index: 13;
+
+    }
+
+    .bar span:last-child{
+        display: none;
+    }
+    .left{
+        left: 42%;
+    }
+
+    .bar .lang ul li img{
+        border-radius: 0px;
+        height: 15px;
+        width: 15px;
+    }
+    .lang li a img.active{
+
+        padding: 0px;
+        border: 2px solid #fff;
+        transition: 0.1s all;
+        box-sizing: border-box;
+    }
+
+}
+
+.login-box, .login-box a{
+    font-size: 18px;
+    color: #fff;
+    font-weight: 800;
+}
+.login-box a{
+    color: #005384;
+}
+
+
+
+
+

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Suivi;
 use App\Request\Suivi\StoreSuiviRequest;
 use App\Request\Suivi\UpdateSuiviRequest;
+use Illuminate\Support\Facades\Auth;
 
 class FrontendController extends Controller
 {
@@ -31,7 +33,6 @@ class FrontendController extends Controller
             return view('front.compteManager', compact(['user', 'colis', 'suivis']));
         }
         return view('front.compteManager', compact(['user', 'colis']));
-
     }
 
     public function apropos()
@@ -40,9 +41,20 @@ class FrontendController extends Controller
     }
     public function suivisform()
     {
+        if(!Auth::user()) {
+            return redirect()->route('front.login');
+        }
         return view('front.modecodesuivis');
     }
-public function sendCode(){
+    public function verifyCode($code){
+        if(!Auth::user()) {
+            return redirect()->route('front.login');
+        }
+        $code=$request('numero');
+        $allsuivi=Suivi::all()->where('numero',$code);
+        if($code) {
+            return view("front.tablesuivis", compact("allsuivi"));
+        }
 
 }
 }

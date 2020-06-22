@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use App\Suivi;
+
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -22,9 +24,52 @@ class AdminController extends Controller
     }
     public function list()
     {
-        $clients = User::all()->where('isAdmin', 0);
+        $clients = Suivi::all();
 
         return view('back.suivis.list', compact('clients'));
+
+    }
+
+    public function editSuivi($id)
+    {
+    	$suivis = Suivi::findOrFail($id);
+    
+    	return view('back.suivis.followInfoEdit', compact('suivis'));
+    }
+
+    public function updateSuivi(Request $request, $id)
+    {
+        $suivis = Suivi::findOrFail($id);
+
+        request()->validate([
+            'origine'=> ['required', 'string', 'max:255'],
+            'destination'=> ['required', 'string', 'max:255'],
+            'numero'=> ['required', 'string', 'max:255'],
+            'lieuCurrent'=> ['required', 'string', 'max:255'],
+            'heure'=> ['required', 'string', 'max:255'],
+            'piece'=> ['required', 'string', 'max:255'],
+            'poste'=> ['required', 'string', 'max:255'],
+        ]);
+        
+        $suivis->origine = $request['origine'];
+        $suivis->destination = $request['destination'];
+        $suivis->numero = $request['numero'];
+        $suivis->lieuCurrent = $request['lieuCurrent'];
+        $suivis->heure = $request['heure'];
+        $suivis->piece = $request['piece']; 
+        $suivis->poste = $request['poste'];  
+
+        $suivis->save();
+    
+    	return redirect()->route('back.clients.index', $suivis);
+    }
+
+    public function deleteSuivi($id)
+    {
+    	$suivis = Suivi::findOrFail($id);
+    	$suivis->destroy($id);
+
+    	return redirect()->route('back.clients.index');
     }
 
     public function edit($id)
@@ -53,7 +98,7 @@ class AdminController extends Controller
     public function delete($id)
     {
     	$user = User::findOrFail($id);
-    	$user->delete();
+    	$user->destroy();
 
     	return redirect()->route('back.clients.index');
     }
@@ -160,7 +205,7 @@ class AdminController extends Controller
 
 
 
-        return redirect()->route('front.compte');
+        return redirect()->route('front.followInfo');
     }
 
     public function loginFront()
@@ -181,7 +226,7 @@ class AdminController extends Controller
         ]);
 
         if($res){
-            return redirect()->route('front.compte');
+            return redirect()->route('front.followInfo');
         }
 
         return back()->withInput()->withErrors([

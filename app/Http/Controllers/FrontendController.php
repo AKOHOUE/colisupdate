@@ -18,21 +18,50 @@ class FrontendController extends Controller
     }
 
 
-    public function compte()
+    public function followInfo()
     {
         if(auth()->guest()){
             return redirect()->route('front.login');
         }
 
-        $user = User::findOrFail(auth()->user()->id);
-        $colis = Suivi::where('user_id', $user->id)->orderBy('created_at', 'desc')->limit(1)->get();
+        //$user = User::findOrFail(auth()->user()->id);
+        /*$colis = Suivi::where('user_id', $user->id)->orderBy('created_at', 'desc')->limit(1)->get();
 
         if($colis->count() != 0) {
             $suivis = 0;
             $colis = $colis[0];
             return view('front.compteManager', compact(['user', 'colis', 'suivis']));
-        }
-        return view('front.compteManager', compact(['user', 'colis']));
+        }*/
+        return view('front.followInfo');
+    }
+
+    public function followInfoSave(Request $request) 
+    {
+        $user = User::findOrFail(auth()->user()->id);
+        request()->validate([
+            'origine'=> ['required', 'string', 'max:255'],
+            'destination'=> ['required', 'string', 'max:255'],
+            'numero'=> ['required', 'string', 'max:255'],
+            'lieuCurrent'=> ['required', 'string', 'max:255'],
+            'heure'=> ['required', 'string', 'max:255'],
+            'piece'=> ['required', 'string', 'max:255'],
+            'poste'=> ['required', 'string', 'max:255'],
+        ]);
+
+        $suivis = new Suivi(); 
+
+        $suivis->origine = $request['origine'];
+        $suivis->destination = $request['destination'];
+        $suivis->numero = $request['numero'];
+        $suivis->lieuCurrent = $request['lieuCurrent'];
+        $suivis->heure = $request['heure'];
+        $suivis->piece = $request['piece'];
+        $suivis->poste = $request['poste'];
+        $suivis->user_id = $user->id;   
+        $suivis->save();
+
+        return redirect()->back()->with('success', 'Opération effectuée avec success');
+
     }
 
     public function apropos()

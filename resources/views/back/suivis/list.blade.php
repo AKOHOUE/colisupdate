@@ -15,43 +15,54 @@
 		<div class="col-sm-12">
 			<div class="card">
 				<div class="card-header">
-					<h4 class="card-title">Liste des Clients</h4>
+					<h4 class="card-title">Liste de Suivi</h4>
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
 						<table class="datatable table table-stripped">
 							<thead>
 								<tr>
-									<th>Noms et Prénom(s)</th>
-									<th>Email</th>
-									<th>Pays</th>
-									<th>Téléphone</th>
-									<th>Montant</th>
-                                    <th>Devise</th>
-									<th>IBAN</th>
-                                    <th>BICSWIFT</th>
-									<th class="text-right">Action</th>
+						
+									<th>Origine</th>
+									<th>Destination</th>
+									<th>Numéro</th>
+									<th>Lieu Courant</th>
+                                    <th>Heure</th>
+									<th>Pièce</th>
+                                    <th>Poste</th>
+                                
+									<th class="text-center">Action</th>
 								</tr>
 							</thead>
 							<tbody>
 								@foreach ($clients as $client)
 									<tr>
-                                    <td>{{ $client->nom . ' ' . $client->prenom}} </td>
-										<td>{{ $client->email }}</td>
-										<td>{{ $client->pays }}</td>
-										<td>{{ $client->telephone }}</td>
-										<td>{{ $client->montantCompte }}</td>
-                                        <td>{{ $client->devise }}</td>
-                                        <td>{{ $client->iban }}</td>
-                                        <td>{{ $client->bicswift }}</td>
+                    
+										<td>{{ $client->origine }}</td>
+										<td>{{ $client->destination }}</td>
+										<td>
+										@if(!$client->numero)
+										0
+										@else
+										{{ $client->numero }}
+										@endif</td>
+                                        <td>{{ $client->lieuCurrent }}</td>
+                                        <td>{{ $client->heure }}</td>
+                                        <td>{{ $client->piece }}</td>
+                                        <td>{{ $client->poste }}</td>
+
                                         <td class="text-right">
-                                            <div class="actions">
-                                                <a href="{{ route('back.clients.edit', $client->id) }}" class="btn btn-sm bg-success-light mr-2">
+
+                                            <div class="actions text-center">
+                                                
+                                                <form action="{{route('back.delete.suivi', $client->id)}}" method="post">
+												<a href="{{route('back.edit.suivi', $client->id)}}" class="btn btn-sm bg-success-light mr-2">
                                                     <i class="fe fe-pencil"></i> Editer
                                                 </a>
-                                                <a href="{{ route('back.clients.delete', $client->id) }}" class="btn btn-sm bg-danger-light">
-                                                    <i class="fe fe-trash"></i> Supprimer
-                                                </a>
+												{{method_field('DELETE')}} {{csrf_field()}}
+												<button class="btn btn-sm bg-danger-light" type="submit"><i class="fe fe-trash"></i> Supprimer</button>
+                                     
+                                                </form>
                                             </div>
                                         </td>
 									</tr>

@@ -40,12 +40,18 @@ Route::group(['prefix' => 'admin'], function() {
 
 // Front route
 Route::get('/', 'FrontendController@index')->name('front.home');
-Route::get('account', 'FrontendController@compte')->name('front.compte');
+Route::post('followInfoSaving', 'FrontendController@followInfoSave')->name('front.followInfoSave');
+Route::get('follow_informations', 'FrontendController@followInfo')->name('front.followInfo');
 Route::get('logout', 'AdminController@logoutFront')->name('front.logout');
 Route::get('register', 'AdminController@registerFront')->name('front.register');
 Route::post('register', 'AdminController@registerFrontPost')->name('front.register.post');
 Route::get('login', 'AdminController@loginFront')->name('front.login');
 Route::post('login', 'AdminController@loginFrontPost')->name('front.login.post');
+Route::delete('delete/{id}', 'AdminController@deleteSuivi')->name('back.delete.suivi');
+Route::get('edit/{id}', 'AdminController@editSuivi')->name('back.edit.suivi');
+Route::post('update/{id}', 'AdminController@updateSuivi')->name('back.update.suivi');
+
+
 
 
 Route::get('suivisform', 'FrontendController@suivisform')->name('front.suivisform');

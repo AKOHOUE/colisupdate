@@ -26,7 +26,7 @@
 									<th>Origine</th>
 									<th>Destination</th>
 									<th>Numéro</th>
-									<th>Lieu Courant</th>
+									<th>Lieu actuelle</th>
                                     <th>Heure</th>
 									<th>Pièce</th>
                                     <th>Poste</th>

@@ -53,8 +53,8 @@
 											@endif
 										</div>
 										<div class="input-field col s4">
-											<label for="lieuCurrent">Date</label>
-											<input id="lieuCurrent" name="lieuCurrent" value="{{$suivis->lieuCurrent}}" type="date" class="form-control"  value="{{ old('lieuCurrent') }}" required />
+											<label for="lieuCurrent">Lieu actuelle du colis</label>
+											<input id="lieuCurrent" name="lieuCurrent" placeholder="saisir le lieu actuelle du colis" type="text" class="form-control"  value="{{ old('lieuCurrent') }}" required />
 											@if($errors->has('lieuCurrent'))
 											<div class="invalid-feedback">{{ $errors->first('lieuCurrent') }}</div>
 											@endif

@@ -47,8 +47,6 @@ class FrontendController extends Controller
         request()->validate([
             'origine'=> ['required', 'string', 'max:255'],
             'destination'=> ['required', 'string', 'max:255'],
-            'numero'=> ['required', 'string', 'max:255'],
-            'lieuCurrent'=> ['required', 'string', 'max:255'],
             'heure'=> ['required', 'string', 'max:255'],
             'piece'=> ['required', 'string', 'max:255'],
             'poste'=> ['required', 'string', 'max:255'],
@@ -58,8 +56,6 @@ class FrontendController extends Controller
 
         $suivis->origine = $request['origine'];
         $suivis->destination = $request['destination'];
-        $suivis->numero = $request['numero'];
-        $suivis->lieuCurrent = $request['lieuCurrent'];
         $suivis->heure = $request['heure'];
         $suivis->piece = $request['piece'];
         $suivis->poste = $request['poste'];

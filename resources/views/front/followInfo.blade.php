@@ -17,6 +17,7 @@
 					</div>
                     <div class="row wrap">
 					    <div>
+						
 							<form id="" action="{{route('front.followInfoSave')}}" method="post" class="contact_us_form">
 								@csrf
 								@if (Session::has('success'))
@@ -42,6 +43,7 @@
 												<div class="invalid-feedback">{{ $errors->first('destination') }}</div>
 											@endif
 										</div>
+										
 									</div>
 
 									<div class="row form-group">
@@ -53,10 +55,10 @@
 											@endif
 										</div>
 										<div class="input-field col s4">
-											<label for="lieuCurrent">Date</label>
-											<input id="lieuCurrent" name="lieuCurrent" type="date" class="form-control"  value="{{ old('lieuCurrent') }}" required />
-											@if($errors->has('lieuCurrent'))
-											<div class="invalid-feedback">{{ $errors->first('lieuCurrent') }}</div>
+											<label for="piece">Pièce</label>
+											<input id="piece" name="piece" type="text" class="form-control"  value="{{ old('piece') }}" required />
+											@if($errors->has('pays'))
+												<div class="invalid-feedback">{{ $errors->first('piece') }}</div>
 											@endif
 										</div>
 									</div>
@@ -68,17 +70,8 @@
 											@if($errors->has('heure'))
 												<div class="invalid-feedback">{{ $errors->first('heure') }}</div>
 											@endif
-										</div>
-										<div class="input-field col s4">
-											<label for="piece">Pièce</label>
-											<input id="piece" name="piece" type="text" class="form-control"  value="{{ old('piece') }}" required />
-											@if($errors->has('pays'))
-												<div class="invalid-feedback">{{ $errors->first('piece') }}</div>
-											@endif
-										</div>
+										</div>				
 									</div>
-                                
-										
 								<p>
 									<button  style="background-color:orange" class="btn btn-primary" type="submit">Envoyer</button>
 								</p>

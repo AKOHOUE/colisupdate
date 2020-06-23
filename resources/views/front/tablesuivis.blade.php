@@ -9,8 +9,10 @@
           <tr>
               <th>Destination</th>
               <th>Heure</th>
-              <th>Date</th>
+              <th>Lieu actuelle du colis</th>
               <th>Pièce </th>
+              <th>Date </th>
+
           </tr>
         </thead>
 
@@ -20,6 +22,8 @@
             <td>{{$suivis->heure}}</td>
             <th>{{$suivis->lieuCurrent}}</th>
             <td>{{$suivis->piece}}</td>
+            <td>{{$suivis->updated_at->format("Y-m-d")}}</td>
+            
           </tr>
         </tbody>
       </table>

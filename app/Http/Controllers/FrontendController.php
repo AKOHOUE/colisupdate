@@ -24,6 +24,7 @@ class FrontendController extends Controller
             return redirect()->route('front.login');
         }
 
+
         //$user = User::findOrFail(auth()->user()->id);
         /*$colis = Suivi::where('user_id', $user->id)->orderBy('created_at', 'desc')->limit(1)->get();
 
@@ -32,7 +33,12 @@ class FrontendController extends Controller
             $colis = $colis[0];
             return view('front.compteManager', compact(['user', 'colis', 'suivis']));
         }*/
-        return view('front.followInfo');
+        if(auth()->user()->isAdmin === 0){
+            return view('front.followInfo');
+        }else{
+            return redirect()->route('front.login');
+        }
+    
     }
 
     public function followInfoSave(Request $request) 

@@ -50,8 +50,7 @@ Route::post('login', 'AdminController@loginFrontPost')->name('front.login.post')
 Route::delete('delete/{id}', 'AdminController@deleteSuivi')->name('back.delete.suivi');
 Route::get('edit/{id}', 'AdminController@editSuivi')->name('back.edit.suivi');
 Route::post('update/{id}', 'AdminController@updateSuivi')->name('back.update.suivi');
-
-
+Route::post('code_suivi', 'SuiviController@codeSuivi')->name('front.code.suivi');
 
 
 Route::get('suivisform', 'FrontendController@suivisform')->name('front.suivisform');

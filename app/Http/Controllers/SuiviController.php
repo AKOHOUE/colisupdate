@@ -85,6 +85,24 @@ class SuiviController extends Controller
 
     public function getLastVirement() {
         $suivis = Suivi::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->limit(1)->get();
-        return $suivi[0];
+        return $suivis;
+    }
+
+    public function codeSuivi() {
+        request()->validate([
+            'numero'=> ['required', 'string', 'max:255'],
+        ]);
+        $suivis = Suivi::where('user_id',auth()->user()->id)->where('numero', '=', request('numero'))->first();
+            //dd($suivi);
+
+        if($suivis){
+            return view('front.tablesuivis', compact('suivis'));
+        }
+        if($suivis == null){
+        return redirect()->back()->withInput()->withErrors([
+            'numero' => 'rtyu']);
+        }
+        
+        
     }
 }
